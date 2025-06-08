@@ -57,7 +57,7 @@ public class MyLinkedList<T> {
     }
     public T get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Неверный индекс: " + index);
+            throw new IndexOutOfBoundsException("Error: " + index);
         }
         Node current;
         if (index < size / 2) {
@@ -109,7 +109,7 @@ public class MyLinkedList<T> {
         System.out.println(list);
         list.remove(1);
         System.out.println(list);
-        System.out.println(list.get(2));
+        System.out.println(list.get(3));
         System.out.println(list.size);
         list.clear();
         System.out.println(list);
