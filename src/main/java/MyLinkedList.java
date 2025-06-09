@@ -4,10 +4,12 @@ public class MyLinkedList<T> {
         T value;
         Node next;
         Node prev;
+
         Node(T value) {
             this.value = value;
         }
     }
+
     private Node head;
     private Node tail;
     private int size = 0;
@@ -52,9 +54,11 @@ public class MyLinkedList<T> {
         }
         size--;
     }
+
     public int size() {
         return size;
     }
+
     public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Error: " + index);
@@ -70,8 +74,10 @@ public class MyLinkedList<T> {
             for (int i = size - 1; i > index; i--) {
                 current = current.prev;
             }
-        } return current.value;
+        }
+        return current.value;
     }
+
     public void clear() {
         if (head != null) {
             Node current = head;
@@ -87,6 +93,7 @@ public class MyLinkedList<T> {
             size = 0;
         }
     }
+
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         Node current = head;
@@ -100,6 +107,7 @@ public class MyLinkedList<T> {
         sb.append("]");
         return sb.toString();
     }
+
     public static void main(String[] args) {
         MyLinkedList<Integer> list = new MyLinkedList<>();
         list.add(1);
