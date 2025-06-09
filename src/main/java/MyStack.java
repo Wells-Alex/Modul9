@@ -1,28 +1,46 @@
-public class MyQueue<T> {
+public class MyStack<T> {
     private Node<T> head;
     private Node<T> tail;
     private int size;
 
-    public MyQueue() {
-        this.head = null;
-        this.tail = null;
-        this.size = 0;
-
+    public MyStack() {
+        head = null;
+        tail = null;
+        size = 0;
     }
 
     public boolean isEmpty() {
         return head == null;
     }
 
-    public void add(T value) {
+    public void push(T value) {
         Node<T> newNode = new Node<>(value);
         if (isEmpty()) {
             head = newNode;
         } else {
             tail.next = newNode;
+
         }
         tail = newNode;
         size++;
+    }
+
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Invalid index");
+        }
+
+        if (index == 0) {
+            head = head.next;
+        } else {
+            Node<T> current = head;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            current.next = current.next.next;
+        }
+
+        size--;
     }
 
     public int size() {
@@ -36,16 +54,13 @@ public class MyQueue<T> {
         return head.value;
     }
 
-    public T poll() {
+    public T pop() {
         if (isEmpty()) {
             return null;
         }
         T value = head.value;
         head = head.next;
         size--;
-        if (isEmpty()) {
-            tail = null;
-        }
         return value;
     }
 
@@ -69,17 +84,19 @@ public class MyQueue<T> {
     }
 
     public static void main(String[] args) {
-        MyQueue<Integer> myQueue = new MyQueue<>();
-        myQueue.add(1);
-        myQueue.add(2);
-        myQueue.add(3);
-        myQueue.add(4);
-        System.out.println(myQueue);
-        System.out.println(myQueue.size);
-        System.out.println(myQueue.peek());
-        System.out.println(myQueue.poll());
-        System.out.println(myQueue);
-        myQueue.clear();
-        System.out.println(myQueue);
+        MyStack<Integer> myStack = new MyStack<>();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
+        System.out.println(myStack);
+        myStack.remove(2);
+        System.out.println(myStack);
+        System.out.println(myStack.size);
+        System.out.println(myStack.peek());
+        myStack.pop();
+        System.out.println(myStack);
+        myStack.clear();
+        System.out.println(myStack);
     }
 }
