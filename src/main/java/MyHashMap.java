@@ -9,6 +9,18 @@ public class MyHashMap<K, V> {
         size = 0;
     }
 
+    private static class MapNode<K, V> {
+        public K key;
+        public V value;
+        public MapNode<K, V> next;
+
+        public MapNode(K key, V value) {
+            this.key = key;
+            this.value = value;
+            this.next = null;
+        }
+    }
+
     public void put(K key, V value) {
         int index = getIndex(key);
         MapNode<K, V> current = table[index];
@@ -109,20 +121,7 @@ public class MyHashMap<K, V> {
         System.out.println(myHashMap);
         myHashMap.remove(321);
         System.out.println(myHashMap);
-        System.out.println(myHashMap.size);
+        System.out.println(myHashMap.size());
         System.out.println(myHashMap.get(231));
     }
 }
-
-class MapNode<K, V> {
-    public K key;
-    public V value;
-    public MapNode<K, V> next;
-
-    public MapNode(K key, V value) {
-        this.key = key;
-        this.value = value;
-        this.next = null;
-    }
-}
-

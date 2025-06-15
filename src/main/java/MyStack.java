@@ -9,6 +9,16 @@ public class MyStack<T> {
         size = 0;
     }
 
+    private static class Node<T> {
+        T value;
+        Node<T> next;
+
+        public Node(T value) {
+            this.value = value;
+            this.next = null;
+        }
+    }
+
     public boolean isEmpty() {
         return head == null;
     }

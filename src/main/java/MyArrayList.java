@@ -1,4 +1,4 @@
-public class MyArrayList {
+public class MyArrayList<T> {
     private Object[] elements;
     private int size;
 
@@ -7,7 +7,7 @@ public class MyArrayList {
         size = 0;
     }
 
-    public void add(Object value) {
+    public void add(T value) {
         ensureCapacity();
         elements[size++] = value;
     }
@@ -22,9 +22,9 @@ public class MyArrayList {
         }
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         checkIndex(index);
-        return elements[index];
+        return (T) elements[index];
     }
 
     private void checkIndex(int index) {
@@ -64,7 +64,7 @@ public class MyArrayList {
 
     public static void main(String[] args) {
         int[] numbers = {3, 7, 1, 9, 2};
-        MyArrayList list = new MyArrayList();
+        MyArrayList<Integer> list = new MyArrayList<>();
         for (int number : numbers) {
             list.add(number);
         }
